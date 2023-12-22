@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Tracking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Product Tracking System</h1>
+
+    <ul>
+        <li>
+            Product ID: <span id="productId">123456</span>
+        </li>
+        <li>
+            Current Status: <span id="currentStatus" class="status">Delivered</span>
+        </li>
+        <li>
+            <button onclick="updateStatus('Picked')">Mark as Picked</button>
+            <button onclick="updateStatus('Delivered')">Mark as Delivered</button>
+            <button onclick="updateStatus('Returned')">Mark as Returned</button>
+            <button onclick="updateStatus('Exception')">Mark as Exception</button>
+        </li>
+    </ul>
+
+    <script>
+        function updateStatus(status) {
+            document.getElementById('currentStatus').innerText = status;
+        }
+    </script>
+
+</body>
+</html>
