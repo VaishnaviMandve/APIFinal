@@ -34,10 +34,10 @@
 
     <ul>
         <li>
-            Product ID: <span id="productId">123456</span>
+            Product ID: <span id="productId"></span>
         </li>
         <li>
-            Current Status: <span id="currentStatus" class="status">Delivered</span>
+            Current Status: <span id="currentStatus" class="status"></span>
         </li>
         <li>
             <button onclick="updateStatus('Picked')">Mark as Picked</button>
@@ -48,10 +48,35 @@
     </ul>
 
     <script>
+        // Fetch data from the API
+        fetch('http://localhost:5000/api/product/ZYW8827')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('productId').innerText = data.product_id;
+                document.getElementById('currentStatus').innerText = data.status;
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        // Update status function
         function updateStatus(status) {
-            document.getElementById('currentStatus').innerText = status;
+            // Assuming you have an API endpoint to update the status
+            fetch('http://localhost:5000/api/product/123456/status', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ status: status }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('currentStatus').innerText = data.status;
+            })
+            .catch(error => console.error('Error updating status:', error));
         }
     </script>
 
 </body>
 </html>
+
+
+     
